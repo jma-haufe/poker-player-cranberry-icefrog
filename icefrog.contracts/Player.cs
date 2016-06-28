@@ -6,21 +6,24 @@ namespace Icefrog
 {
     public class Player
     {
-        public Player(JToken playerObject)
+        public JToken PlayerToken { get; set; }
+
+        public Player(JToken playerToken)
         {
+            this.PlayerToken = playerToken;
             try
             {
-                this.Bet = playerObject.Value<int>("bet");
+                this.Bet = playerToken.Value<int>("bet");
                 this.HoleCards = new List<Card>();
-                foreach (var cardToken in playerObject.SelectTokens("hole_cards"))
+                foreach (var cardToken in playerToken.SelectToken("hole_cards"))
                 {
                     this.HoleCards.Add(new Card(cardToken));
                 }
-                this.Id = playerObject.Value<int>("id");
-                this.Name = playerObject.Value<string>("name");
-                this.Stack = playerObject.Value<int>("stack");
-                this.Status = playerObject.Value<string>("status");
-                this.Version = playerObject.Value<string>("version");
+                this.Id = playerToken.Value<int>("id");
+                this.Name = playerToken.Value<string>("name");
+                this.Stack = playerToken.Value<int>("stack");
+                this.Status = playerToken.Value<string>("status");
+                this.Version = playerToken.Value<string>("version");
             }
             catch(Exception ex)
             {

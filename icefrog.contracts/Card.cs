@@ -5,8 +5,12 @@ namespace Icefrog
 {
     public class Card
     {
+        public JToken CardToken { get; set; }
+
         public Card(JToken cardToken)
         {
+            this.CardToken = cardToken;
+
             try
             {
                 this.Rank = cardToken.Value<string>("rank");

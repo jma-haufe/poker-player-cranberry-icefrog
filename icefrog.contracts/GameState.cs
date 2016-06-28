@@ -6,6 +6,8 @@ namespace Icefrog
 {
     public class GameState
     {
+        public JObject GameStateObject { get; set; }
+
         public GameState()
         {
             this.Players = new List<Player>();

@@ -10,11 +10,10 @@ namespace Icefrog
         public void GetRatingTest()
         {
             var gameStateObject = JObject.Parse(GameStateObjectString);
-
             var gameState = new GameState(gameStateObject);
-            //var jsonobject = new JObject();
-            //var rainmanWrapper = new RainmanWrapper();
-            //var rating = rainmanWrapper.GetRating(jsonobject);
+            
+            var rainmanWrapper = new RainmanWrapper();
+            var rating = rainmanWrapper.GetRating(gameState);
             
         }
 
