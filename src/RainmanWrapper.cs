@@ -5,9 +5,16 @@ namespace Nancy.Simple
 {
     public class RainmanWrapper : NancyModule
     {
-        public Nancy.Response GetInfo()
+        public Nancy.Response GetInfo(JObject gameState)
         {
-            Get["/"] = _ => {
+            var cards = "/";
+            var players = gameState.Values("players");
+            var self = players[1];
+            var owncards = self.Values("hole_cards");
+            var communityCards = gameState.Values("community_cards");
+            var allCards = communityCards;
+
+            Get[cards] = _ => {
                 var contentBytes = Encoding.UTF8.GetBytes("OK");
                 var response = new Response
                 {
@@ -19,6 +26,5 @@ namespace Nancy.Simple
             };
             return null;
         }
-
     }
 }
