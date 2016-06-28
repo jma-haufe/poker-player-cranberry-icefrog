@@ -2,7 +2,7 @@
 {
     public class Card
     {
-        private string Rank { get; set; }
-        private string Suit { get; set; }
+        public string Rank { get; set; }
+        public string Suit { get; set; }
     }
 }
