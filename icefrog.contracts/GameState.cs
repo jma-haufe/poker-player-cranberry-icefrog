@@ -24,7 +24,7 @@ namespace Icefrog
                     this.Players.Add(new Player(playerObject));
                 }
 
-                foreach (var cardObject in gameState.Values("community_cards"))
+                foreach (var cardObject in gameState.GetValue("community_cards"))
                 {
                     this.CommunityCards.Add(new Card(cardObject));
                 }
