@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net40": {
+      "bin": {
+        "assembly": "../../lib/Nancy.Hosting.Self.dll"
+      },
+      "dependencies": {
+        "Nancy": "1.0.0-*"
+      }
+    }
+  }
+}
