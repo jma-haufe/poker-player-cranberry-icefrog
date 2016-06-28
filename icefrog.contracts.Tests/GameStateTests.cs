@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace Icefrog
 {
     [TestFixture]
-	public class GameStateTests 
+	public class GameStateTests
 	{
 		[Test]
         [TestCase(0, ExpectedResult = 0)]
