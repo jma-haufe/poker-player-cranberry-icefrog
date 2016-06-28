@@ -14,6 +14,7 @@ namespace Icefrog
         public IEnumerable<Card> CommunityCards { get; set; }
         public IEnumerable<Card> HoleCards { get; set; }
 
+
         public bool IsHighCard
         {
             get
@@ -22,8 +23,45 @@ namespace Icefrog
                 return cards.Any(card => card.Rank.ToUpper() == "K" || card.Rank.ToUpper() == "A");
             }
         }
-        
-public bool IsOnePair
+
+        public bool IsFlush
+        {
+            get
+            {
+                var cards = JoinCards(HoleCards, CommunityCards);
+                if (cards.Count < 5)
+                {
+                    return false;
+                }
+
+                var sameSuit = 0;
+
+                foreach (var leftCard in cards)
+                {
+                    foreach (var rightCard in cards)
+                    {
+                        if (leftCard == rightCard)
+                        {
+                            continue;
+                        }
+
+                        if (leftCard.Suit == rightCard.Suit)
+                        {
+                            sameSuit++;
+                        }
+
+                        if (sameSuit > 5)
+                        {
+                            return true;
+                        }
+                    }
+                }
+
+                return false;
+            }
+        }
+
+        public bool IsOnePair
         {
             get
             {

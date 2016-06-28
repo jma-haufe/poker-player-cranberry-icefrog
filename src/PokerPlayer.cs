@@ -49,6 +49,10 @@ namespace Nancy.Simple
                     {
                         bet = 10000;
                     }
+                    if (hand.IsFlush)
+                    {
+                        bet = 10000;
+                    }
                     else if (hand.IsThreeOfAKind)
                     {
                         bet *= 3;
