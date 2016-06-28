@@ -15,10 +15,12 @@ namespace Nancy.Simple
             try
             {
                 var gs = new GameState(gameState);
+                var ourPlayer = gs.Players.First(p => p.Name == "Cranberry Icefrog");
+
                 var hand = new HandEvaluation
                 {
                     CommunityCards = gs.CommunityCards,
-                    HoleCards = gs.Players.First(p => p.Name == "Cranberry Icefrog").HoleCards
+                    HoleCards = ourPlayer.HoleCards
                 };
 
                 bool isPreFlop = hand.AllCards.Count == 2;
@@ -47,7 +49,11 @@ namespace Nancy.Simple
 
                     if (hand.IsFourOfAKind)
                     {
-                        bet = 10000;
+                        bet = ourPlayer.Stack;
+                    }
+                    if (hand.IsFlush)
+                    {
+                        bet = ourPlayer.Stack;
                     }
                     else if (hand.IsFullHouse)
                     {
