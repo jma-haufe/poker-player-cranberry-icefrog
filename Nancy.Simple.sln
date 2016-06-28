@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.Simple", "src\Nancy.Simple.csproj", "{0B3EA40E-F7D8-4E14-A30F-1536F41B62D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.Simple.Tests", "Nancy.Simple.Tests\Nancy.Simple.Tests.csproj", "{87F61DCE-422A-489B-9CC9-128E2874CC78}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "icefrog.contracts.Tests", "icefrog.contracts.Tests\icefrog.contracts.Tests.csproj", "{87F61DCE-422A-489B-9CC9-128E2874CC78}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "icefrog.contracts", "icefrog.contracts\icefrog.contracts.csproj", "{20114CBC-A113-4EB6-92CB-E1B2CE03FB32}"
 EndProject
