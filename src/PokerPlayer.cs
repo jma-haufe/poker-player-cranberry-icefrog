@@ -49,6 +49,10 @@ namespace Nancy.Simple
                     {
                         bet = 10000;
                     }
+                    else if (hand.IsFullHouse)
+                    {
+                        bet = 10000;
+                    }
                     else if (hand.IsThreeOfAKind)
                     {
                         bet *= 3;

@@ -19,11 +19,15 @@ namespace Icefrog
             get
             {
                 var cards = JoinCards(HoleCards, CommunityCards);
-                return cards.Any(card => card.Rank.ToUpper() == "K" || card.Rank.ToUpper() == "A");
+                return cards.Any(card => card.Rank.ToUpper() == "K"
+                    || card.Rank.ToUpper() == "A"
+                    || card.Rank.ToUpper() == "Q"
+                    || card.Rank.ToUpper() == "J"
+                    );
             }
         }
-        
-public bool IsOnePair
+
+        public bool IsOnePair
         {
             get
             {
@@ -47,6 +51,24 @@ public bool IsOnePair
             {
                 var cards = AllCards;
                 return HasSameOfAKind(cards, 4);
+            }
+        }
+
+        public bool IsFullHouse
+        {
+            get
+            {
+                var cards = JoinCards(HoleCards, CommunityCards);
+                var threeCards = FindSameOfAKind(cards, 3);
+                if (threeCards.Count == 3)
+                {
+                    foreach (var threeCard in threeCards)
+                    {
+                        cards.Remove(threeCard);
+                    }
+                    return HasSameOfAKind(cards, 2);
+                }
+                return false;
             }
         }
 
@@ -74,6 +96,34 @@ public bool IsOnePair
                 }
             }
             return false;
+        }
+        private static List<Card> FindSameOfAKind(List<Card> cards, int sameKindCount)
+        {
+            var foundCards = new List<Card>();
+            int sameRankCount = 0;
+            foreach (var leftCard in cards)
+            {
+                foreach (var rightCard in cards)
+                {
+                    if (rightCard == leftCard)
+                    {
+                        continue;
+                    }
+
+                    if (rightCard.Rank == leftCard.Rank)
+                    {
+                        foundCards.Add(rightCard);
+                        sameRankCount++;
+                    }
+
+                    if (sameRankCount == sameKindCount)
+                    {
+                        return foundCards;
+                    }
+                }
+            }
+            foundCards.Clear();
+            return foundCards;
         }
 
         private static List<Card> JoinCards(params IEnumerable<Card>[] cardCollections)
