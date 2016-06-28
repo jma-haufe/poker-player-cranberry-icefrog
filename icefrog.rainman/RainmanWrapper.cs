@@ -1,12 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Nancy;
+using Newtonsoft.Json.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace icefrog.rainman
 {
-    public class RainmanWrapper
+    public class RainmanWrapper : NancyModule
     {
+        public Response GetRating(JObject gameState)
+        {
+            var cards = "/";
+            var players = gameState.Values("players");
+            var self = players[1];
+            var owncards = self.Values("hole_cards");
+            var communityCards = gameState.Values("community_cards");
+            var allCards = communityCards;
+
+            Get[cards] = _ => {
+                var contentBytes = Encoding.UTF8.GetBytes("OK");
+                var response = new Response
+                {
+                    ContentType = "text/plain",
+                    Contents = s => s.Write(contentBytes, 0, contentBytes.Length),
+                    StatusCode = HttpStatusCode.OK
+                };
+                return response;
+            };
+            return null;
+        }
     }
 }

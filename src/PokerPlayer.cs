@@ -7,14 +7,13 @@ namespace Nancy.Simple
 	{
 		public static readonly string VERSION = "Cranberry Icefrogs Pokerbot 1";
 
-        public static RainmanWrapper Rainman = new RainmanWrapper();
-
 		public static int BetRequest(JObject gameState)
 		{
             var gs = new GameState(gameState);
 
             int bet = gs.CurrentBuyIn + gs.SmallBlind * 2;
             
+
             return bet;
 		}
         
