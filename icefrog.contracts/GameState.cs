@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 
 namespace Icefrog
@@ -15,15 +16,22 @@ namespace Icefrog
         {
             SmallBlind = gameState.Value<int>("small_blind");
             CurrentBuyIn = gameState.Value<int>("current_buy_in");
-            
-            foreach(var playerObject in gameState.Values("players"))
-            {
-                this.Players.Add(new Player(playerObject));
-            }
 
-            foreach (var cardObject in gameState.Values("community_cards"))
+            try
             {
-                this.CommunityCards.Add(new Card(cardObject));
+                foreach (var playerObject in gameState.Values("players"))
+                {
+                    this.Players.Add(new Player(playerObject));
+                }
+
+                foreach (var cardObject in gameState.Values("community_cards"))
+                {
+                    this.CommunityCards.Add(new Card(cardObject));
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
             }
         }
 

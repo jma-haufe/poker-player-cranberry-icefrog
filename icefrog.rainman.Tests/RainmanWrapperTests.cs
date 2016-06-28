@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Icefrog;
+using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 
 namespace icefrog.rainman.Tests
@@ -9,8 +10,9 @@ namespace icefrog.rainman.Tests
         [Test]
         public void GetRatingTest()
         {
-            var gameState = JObject.Parse(GameStateObjectString);
+            var gameStateObject = JObject.Parse(GameStateObjectString);
 
+            var gameState = new GameState(gameStateObject);
             //var jsonobject = new JObject();
             //var rainmanWrapper = new RainmanWrapper();
             //var rating = rainmanWrapper.GetRating(jsonobject);
