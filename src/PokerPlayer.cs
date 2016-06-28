@@ -8,8 +8,8 @@ namespace Nancy.Simple
 
 		public static int BetRequest(JObject gameState)
 		{
-			//TODO: Use this method to return the value You want to bet
-			return 0;
+            var smallBlind = gameState.Value<int>("small_blind");
+			return smallBlind * 2;
 		}
 
 		public static void ShowDown(JObject gameState)
