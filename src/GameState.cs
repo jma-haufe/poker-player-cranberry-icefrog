@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 
 namespace Nancy.Simple
 {
     public class GameState
     {
+        public GameState()
+        {
+        }
+
         public GameState(JObject gameState)
         {
             SmallBlind = gameState.Value<int>("small_blind");
@@ -17,5 +17,10 @@ namespace Nancy.Simple
         public int CurrentBuyIn { get; set; }
 
         public int SmallBlind { get; set; }
+
+        public int BigBlind
+        {
+            get { return this.SmallBlind*2; }
+        }
     }
 }
