@@ -19,7 +19,7 @@ namespace Icefrog
 
             try
             {
-                foreach (var playerObject in gameState.Values("players"))
+                foreach (var playerObject in gameState.GetValue("players"))
                 {
                     this.Players.Add(new Player(playerObject));
                 }
