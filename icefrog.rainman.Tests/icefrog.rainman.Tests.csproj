@@ -61,10 +61,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\icefrog.contracts\icefrog.contracts.csproj">
+      <Project>{20114CBC-A113-4EB6-92CB-E1B2CE03FB32}</Project>
+      <Name>icefrog.contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\icefrog.rainman\icefrog.rainman.csproj">
       <Project>{404435a9-d034-42fa-bde8-2540c07947c5}</Project>
       <Name>icefrog.rainman</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

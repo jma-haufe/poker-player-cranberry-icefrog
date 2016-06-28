@@ -1,4 +1,5 @@
-﻿using Nancy;
+﻿using Icefrog;
+using Nancy;
 using Newtonsoft.Json.Linq;
 using System.Text;
 
@@ -6,25 +7,20 @@ namespace icefrog.rainman
 {
     public class RainmanWrapper : NancyModule
     {
-        public Response GetRating(JObject gameState)
+        public Response GetRating(GameState gameState)
         {
-            var cards = "/";
-            var players = gameState.Values("players");
-            var self = players[1];
-            var owncards = self.Values("hole_cards");
-            var communityCards = gameState.Values("community_cards");
-            var allCards = communityCards;
+            
 
-            Get[cards] = _ => {
-                var contentBytes = Encoding.UTF8.GetBytes("OK");
-                var response = new Response
-                {
-                    ContentType = "text/plain",
-                    Contents = s => s.Write(contentBytes, 0, contentBytes.Length),
-                    StatusCode = HttpStatusCode.OK
-                };
-                return response;
-            };
+            //Get[cards] = _ => {
+            //    var contentBytes = Encoding.UTF8.GetBytes("OK");
+            //    var response = new Response
+            //    {
+            //        ContentType = "text/plain",
+            //        Contents = s => s.Write(contentBytes, 0, contentBytes.Length),
+            //        StatusCode = HttpStatusCode.OK
+            //    };
+            //    return response;
+            //};
             return null;
         }
     }
