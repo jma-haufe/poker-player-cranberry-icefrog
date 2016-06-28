@@ -47,7 +47,7 @@ namespace Nancy.Simple
 
                     if (hand.IsFourOfAKind)
                     {
-                        bet *= 4;
+                        bet = 10000;
                     }
                     else if (hand.IsThreeOfAKind)
                     {
