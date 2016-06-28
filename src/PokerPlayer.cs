@@ -5,16 +5,15 @@ namespace Nancy.Simple
 {
 	public static class PokerPlayer
 	{
-		public static readonly string VERSION = "Cranberry Icefrogs Pokerbot";
+		public static readonly string VERSION = "Cranberry Icefrogs Pokerbot 1";
 
         public static RainmanWrapper Rainman = new RainmanWrapper();
 
 		public static int BetRequest(JObject gameState)
 		{
-            int bet = 0;
-            var smallBlind = gameState.Value<int>("small_blind");
-            var currentBuyIn = gameState.Value<int>("current_buy_in");
-            bet = currentBuyIn + smallBlind * 2;
+            var gs = new GameState(gameState);
+
+            int bet = gs.CurrentBuyIn + gs.SmallBlind * 2;
             
             return bet;
 		}
