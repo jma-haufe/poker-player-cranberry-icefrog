@@ -16,11 +16,11 @@ namespace Nancy.Simple
                 var gs = new GameState(gameState);
                 var hand = new HandEvaluation();
 
-                bet = gs.CurrentBuyIn;
+                bet = gs.CurrentBuyIn + gs.BigBlind;
 
                 if (hand.IsFourOfAKind)
                 {
-                    bet *= 2;
+                    bet *= 4;
                 }
                 else if (hand.IsThreeOfAKind)
                 {
