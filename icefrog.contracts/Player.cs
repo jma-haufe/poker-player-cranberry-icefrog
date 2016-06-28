@@ -12,7 +12,7 @@ namespace Icefrog
             {
                 this.Bet = playerObject.Value<int>("bet");
                 this.HoleCards = new List<Card>();
-                foreach (var cardToken in playerObject.Values(""))
+                foreach (var cardToken in playerObject.Values("hole_cards"))
                 {
                     this.HoleCards.Add(new Card(cardToken));
                 }
