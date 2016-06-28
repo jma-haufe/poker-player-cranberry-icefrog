@@ -11,8 +11,13 @@ namespace Icefrog
             this.HoleCards = new List<Card>();
             foreach (var cardToken in playerObject.Values())
             {
-
+                this.HoleCards.Add(new Card(cardToken));
             }
+            this.Id = playerObject.Value<int>("id");
+            this.Name = playerObject.Value<string>("name");
+            this.Stack = playerObject.Value<int>("stack");
+            this.Status = playerObject.Value<string>("status");
+            this.Version = playerObject.Value<string>("version");
         }
 
         IEnumerable<Card> _holeCards = new List<Card>();

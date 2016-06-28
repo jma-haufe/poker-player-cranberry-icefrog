@@ -12,9 +12,9 @@ namespace Nancy.Simple
 		{
             var gs = new GameState(gameState);
 
-            int bet = gs.CurrentBuyIn + gs.SmallBlind * 2;
-            
+            int bet = gs.CurrentBuyIn + gs.BigBlind;
 
+            if (bet < 0) bet = 10000;
             return bet;
 		}
         

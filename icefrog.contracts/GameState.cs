@@ -8,6 +8,7 @@ namespace Icefrog
         public GameState()
         {
             this.Players = new List<Player>();
+            this.CommunityCards = new List<Card>();
         }
 
         public GameState(JObject gameState) : this()
@@ -15,9 +16,14 @@ namespace Icefrog
             SmallBlind = gameState.Value<int>("small_blind");
             CurrentBuyIn = gameState.Value<int>("current_buy_in");
             
-            foreach(var playerObject  in gameState.Values("players"))
+            foreach(var playerObject in gameState.Values("players"))
             {
                 this.Players.Add(new Player(playerObject));
+            }
+
+            foreach (var cardObject in gameState.Values("community_cards"))
+            {
+                this.CommunityCards.Add(new Card(cardObject));
             }
         }
 
@@ -30,7 +36,9 @@ namespace Icefrog
             get { return this.SmallBlind * 2; }
         }
 
-        public IList<Player> Players { get; private set; }
+        public IList<Player> Players { get; set; }
+
+        public IList<Card> CommunityCards { get; set; }
 
     }
 }

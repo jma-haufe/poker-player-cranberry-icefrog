@@ -1,7 +1,5 @@
 ﻿using Icefrog;
 using Nancy;
-using Newtonsoft.Json.Linq;
-using System.Text;
 
 namespace icefrog.rainman
 {
