@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Nancy.Simple
 {
-	public static class PokerPlayer
+    public static class PokerPlayer
 	{
 		public static readonly string VERSION = "Cranberry Icefrogs Pokerbot 1";
 
@@ -14,8 +14,22 @@ namespace Nancy.Simple
             try
             {
                 var gs = new GameState(gameState);
+                var hand = new HandEvaluation();
 
                 bet = gs.CurrentBuyIn + gs.BigBlind;
+
+                if (hand.IsFourOfAKind)
+                {
+                    bet *= 4;
+                }
+                else if (hand.IsThreeOfAKind)
+                {
+                    bet *= 3;
+                }
+                else if (hand.IsOnePair)
+                {
+                    bet *= 2;
+                }
 
                 Console.WriteLine("CurrentBuyIn: " + gs.CurrentBuyIn);
                 Console.WriteLine("BigBlind: " + gs.BigBlind);
