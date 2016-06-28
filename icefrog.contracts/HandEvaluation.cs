@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 
 namespace Icefrog
 {
     public class HandEvaluation
     {
-        private List<Card> AllCards
+        public List<Card> AllCards
         {
             get { return JoinCards(HoleCards, CommunityCards); }
         }
@@ -12,7 +14,16 @@ namespace Icefrog
         public IEnumerable<Card> CommunityCards { get; set; }
         public IEnumerable<Card> HoleCards { get; set; }
 
-        public bool IsOnePair
+        public bool IsHighCard
+        {
+            get
+            {
+                var cards = JoinCards(HoleCards, CommunityCards);
+                return cards.Any(card => card.Rank.ToUpper() == "K" || card.Rank.ToUpper() == "A");
+            }
+        }
+        
+public bool IsOnePair
         {
             get
             {
@@ -20,6 +31,7 @@ namespace Icefrog
                 return HasSameOfAKind(cards, 2);
             }
         }
+
         public bool IsThreeOfAKind
         {
             get

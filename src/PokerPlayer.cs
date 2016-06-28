@@ -16,19 +16,50 @@ namespace Nancy.Simple
                 var gs = new GameState(gameState);
                 var hand = new HandEvaluation();
 
-                bet = gs.CurrentBuyIn + gs.BigBlind;
+                bool isPreFlop = hand.AllCards.Count == 2;
+                bool isFlop = hand.AllCards.Count > 2;
 
-                if (hand.IsFourOfAKind)
+                if (isPreFlop)
                 {
-                    bet *= 4;
+                    bet = gs.CurrentBuyIn;
+
+                    if (hand.IsHighCard)
+                    {
+                        bet += gs.BigBlind;
+                    }
+                    else if (hand.IsOnePair)
+                    {
+                        bet += gs.BigBlind + gs.SmallBlind;
+                    }
+                    else if (hand.IsHighCard && hand.IsOnePair)
+                    {
+                        bet += gs.BigBlind*2;
+                    }
                 }
-                else if (hand.IsThreeOfAKind)
+                if (isFlop)
                 {
-                    bet *= 3;
-                }
-                else if (hand.IsOnePair)
-                {
-                    bet *= 2;
+                    bet = gs.CurrentBuyIn;
+
+                    if (hand.IsFourOfAKind)
+                    {
+                        bet *= 4;
+                    }
+                    else if (hand.IsThreeOfAKind)
+                    {
+                        bet *= 3;
+                    }
+                    else if (hand.IsOnePair)
+                    {
+                        bet *= 2;
+                    }
+                    else if (hand.IsHighCard)
+                    {
+                        // do nothing
+                    }
+                    else
+                    {
+                        bet = 0;
+                    }
                 }
 
                 Console.WriteLine("CurrentBuyIn: " + gs.CurrentBuyIn);
