@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Icefrog;
 using Newtonsoft.Json.Linq;
 
@@ -6,7 +7,7 @@ namespace Nancy.Simple
 {
     public static class PokerPlayer
 	{
-		public static readonly string VERSION = "Cranberry Icefrogs start analyzing hand";
+		public static readonly string VERSION = "Cranberry Icefrogs now really looking at cards";
 
 		public static int BetRequest(JObject gameState)
 		{
@@ -14,7 +15,11 @@ namespace Nancy.Simple
             try
             {
                 var gs = new GameState(gameState);
-                var hand = new HandEvaluation();
+                var hand = new HandEvaluation
+                {
+                    CommunityCards = gs.CommunityCards,
+                    HoleCards = gs.Players.First(p => p.Name == "Cranberry Icefrog").HoleCards
+                };
 
                 bool isPreFlop = hand.AllCards.Count == 2;
                 bool isFlop = hand.AllCards.Count > 2;
