@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net40": {
+      "wrappedProject": "../../src/Nancy.Simple.csproj",
+      "bin": {
+        "assembly": "../../src/obj/x86/{configuration}/Nancy.Simple.exe",
+        "pdb": "../../src/obj/x86/{configuration}/Nancy.Simple.pdb"
+      },
+      "dependencies": {
+        "Newtonsoft.Json": "6.0.8",
+        "Nancy": "1.0.0-*",
+        "Nancy.Hosting.Self": "1.0.0-*"
+      }
+    }
+  }
+}

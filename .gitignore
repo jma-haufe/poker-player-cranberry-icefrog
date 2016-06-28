@@ -2,3 +2,5 @@ bin/
 obj/
 .DS_Store
 *.userprefs
+/Nancy.Simple.Tests/Class1.cs
+/.vs/Nancy.Simple/v14/.suo
