@@ -10,14 +10,21 @@ namespace Nancy.Simple
 
 		public static int BetRequest(JObject gameState)
 		{
-            var gs = new GameState(gameState);
+            int bet = -1;
+            try
+            {
+                var gs = new GameState(gameState);
 
-            int bet = gs.CurrentBuyIn + gs.BigBlind;
+                bet = gs.CurrentBuyIn + gs.BigBlind;
 
-            Console.WriteLine("CurrentBuyIn: " + gs.CurrentBuyIn);
-            Console.WriteLine("BigBlind: " + gs.BigBlind);
-            Console.WriteLine("bet: " + bet);
-
+                Console.WriteLine("CurrentBuyIn: " + gs.CurrentBuyIn);
+                Console.WriteLine("BigBlind: " + gs.BigBlind);
+                Console.WriteLine("bet: " + bet);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
             if (bet < 0) bet = 10000;
             return bet;
 		}

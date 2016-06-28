@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 
 namespace Icefrog
@@ -7,17 +8,24 @@ namespace Icefrog
     {
         public Player(JToken playerObject)
         {
-            this.Bet = playerObject.Value<int>("bet");
-            this.HoleCards = new List<Card>();
-            foreach (var cardToken in playerObject.Values())
+            try
             {
-                this.HoleCards.Add(new Card(cardToken));
+                this.Bet = playerObject.Value<int>("bet");
+                this.HoleCards = new List<Card>();
+                foreach (var cardToken in playerObject.Values("hole_cards"))
+                {
+                    this.HoleCards.Add(new Card(cardToken));
+                }
+                this.Id = playerObject.Value<int>("id");
+                this.Name = playerObject.Value<string>("name");
+                this.Stack = playerObject.Value<int>("stack");
+                this.Status = playerObject.Value<string>("status");
+                this.Version = playerObject.Value<string>("version");
             }
-            this.Id = playerObject.Value<int>("id");
-            this.Name = playerObject.Value<string>("name");
-            this.Stack = playerObject.Value<int>("stack");
-            this.Status = playerObject.Value<string>("status");
-            this.Version = playerObject.Value<string>("version");
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
 
         IEnumerable<Card> _holeCards = new List<Card>();

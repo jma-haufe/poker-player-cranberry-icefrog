@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "icefrog.contracts", "icefro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "icefrog.rainman", "icefrog.rainman\icefrog.rainman.csproj", "{404435A9-D034-42FA-BDE8-2540C07947C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "icefrog.rainman.Tests", "icefrog.rainman.Tests\icefrog.rainman.Tests.csproj", "{45E0B0A7-E541-4D2E-9DB4-A88703051AFE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,14 +51,6 @@ Global
 		{404435A9-D034-42FA-BDE8-2540C07947C5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{404435A9-D034-42FA-BDE8-2540C07947C5}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{404435A9-D034-42FA-BDE8-2540C07947C5}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{45E0B0A7-E541-4D2E-9DB4-A88703051AFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{45E0B0A7-E541-4D2E-9DB4-A88703051AFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{45E0B0A7-E541-4D2E-9DB4-A88703051AFE}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{45E0B0A7-E541-4D2E-9DB4-A88703051AFE}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{45E0B0A7-E541-4D2E-9DB4-A88703051AFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{45E0B0A7-E541-4D2E-9DB4-A88703051AFE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{45E0B0A7-E541-4D2E-9DB4-A88703051AFE}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{45E0B0A7-E541-4D2E-9DB4-A88703051AFE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

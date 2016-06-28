@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using System;
 
 namespace Icefrog
 {
@@ -6,8 +7,15 @@ namespace Icefrog
     {
         public Card(JToken cardToken)
         {
-            this.Rank = cardToken.Value<string>("rank");
-            this.Suit = cardToken.Value<string>("suit");
+            try
+            {
+                this.Rank = cardToken.Value<string>("rank");
+                this.Suit = cardToken.Value<string>("suit");
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
 
         public Card(string suit, string rank)
