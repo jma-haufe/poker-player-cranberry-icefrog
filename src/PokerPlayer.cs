@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System;
+using Newtonsoft.Json.Linq;
 
 namespace Nancy.Simple
 {
@@ -8,11 +9,15 @@ namespace Nancy.Simple
 
 		public static int BetRequest(JObject gameState)
 		{
+            int bet = 0;
             var smallBlind = gameState.Value<int>("small_blind");
-			return smallBlind * 2;
-		}
 
-		public static void ShowDown(JObject gameState)
+            bet = smallBlind * 2;
+
+            return bet;
+		}
+        
+        public static void ShowDown(JObject gameState)
 		{
 			//TODO: Use this method to showdown
 		}
