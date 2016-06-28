@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 
-namespace Nancy.Simple
+namespace Icefrog
 {
     public class GameState
     {

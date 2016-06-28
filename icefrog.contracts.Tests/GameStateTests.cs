@@ -1,7 +1,7 @@
 ﻿
 using NUnit.Framework;
 
-namespace Nancy.Simple
+namespace Icefrog
 {
     [TestFixture]
 	public class GameStateTests 

@@ -1,4 +1,5 @@
 ﻿using System;
+using Icefrog;
 using Newtonsoft.Json.Linq;
 
 namespace Nancy.Simple
