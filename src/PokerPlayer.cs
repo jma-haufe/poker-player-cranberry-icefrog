@@ -14,6 +14,10 @@ namespace Nancy.Simple
 
             int bet = gs.CurrentBuyIn + gs.BigBlind;
 
+            Console.WriteLine("CurrentBuyIn: " + gs.CurrentBuyIn);
+            Console.WriteLine("BigBlind: " + gs.BigBlind);
+            Console.WriteLine("bet: " + bet);
+
             if (bet < 0) bet = 10000;
             return bet;
 		}
