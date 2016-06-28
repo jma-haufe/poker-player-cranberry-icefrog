@@ -10,6 +10,12 @@ namespace Icefrog
             this.Suit = cardToken.Value<string>("suit");
         }
 
+        public Card(string suit, string rank)
+        {
+            this.Rank = rank;
+            this.Suit = suit;
+        }
+
         public string Rank { get; set; }
         public string Suit { get; set; }
     }
