@@ -20,7 +20,7 @@ namespace Icefrog
 
         public int BigBlind
         {
-            get { return this.SmallBlind*2; }
+            get { return this.SmallBlind * 2; }
         }
     }
 }
