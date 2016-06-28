@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Linq;
 using Icefrog;
 using Newtonsoft.Json.Linq;
 
 namespace Nancy.Simple
 {
-	public static class PokerPlayer
+    public static class PokerPlayer
 	{
-		public static readonly string VERSION = "Cranberry Icefrogs Pokerbot 1";
+		public static readonly string VERSION = "Cranberry Icefrogs now really looking at cards";
 
 		public static int BetRequest(JObject gameState)
 		{
@@ -14,8 +15,57 @@ namespace Nancy.Simple
             try
             {
                 var gs = new GameState(gameState);
+                var hand = new HandEvaluation
+                {
+                    CommunityCards = gs.CommunityCards,
+                    HoleCards = gs.Players.First(p => p.Name == "Cranberry Icefrog").HoleCards
+                };
 
-                bet = gs.CurrentBuyIn + gs.BigBlind;
+                bool isPreFlop = hand.AllCards.Count == 2;
+                bool isFlop = hand.AllCards.Count > 2;
+
+                if (isPreFlop)
+                {
+                    bet = gs.CurrentBuyIn;
+
+                    if (hand.IsHighCard)
+                    {
+                        bet += gs.BigBlind;
+                    }
+                    else if (hand.IsOnePair)
+                    {
+                        bet += gs.BigBlind + gs.SmallBlind;
+                    }
+                    else if (hand.IsHighCard && hand.IsOnePair)
+                    {
+                        bet += gs.BigBlind*2;
+                    }
+                }
+                if (isFlop)
+                {
+                    bet = gs.CurrentBuyIn;
+
+                    if (hand.IsFourOfAKind)
+                    {
+                        bet *= 4;
+                    }
+                    else if (hand.IsThreeOfAKind)
+                    {
+                        bet *= 3;
+                    }
+                    else if (hand.IsOnePair)
+                    {
+                        bet *= 2;
+                    }
+                    else if (hand.IsHighCard)
+                    {
+                        // do nothing
+                    }
+                    else
+                    {
+                        bet = 0;
+                    }
+                }
 
                 Console.WriteLine("CurrentBuyIn: " + gs.CurrentBuyIn);
                 Console.WriteLine("BigBlind: " + gs.BigBlind);
