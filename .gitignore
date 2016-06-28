@@ -5,4 +5,5 @@ obj/
 *.userprefs
 *.suo
 *.sln.DotSettings.user
+*.csproj.user
 
