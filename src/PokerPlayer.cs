@@ -15,6 +15,9 @@ namespace Nancy.Simple
             var smallBlind = gameState.Value<int>("small_blind");
             var currentBuyIn = gameState.Value<int>("current_buy_in");
             bet = currentBuyIn + smallBlind * 2;
+
+            var rainmainInfo = Rainman.GetInfo(gameState);
+
             
             return bet;
 		}
